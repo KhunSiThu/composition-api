@@ -1,20 +1,19 @@
 <template>
-  <h3>{{ post.title }}</h3>
-  <p>{{ cutPostBody }}</p>
+    <router-link :to="{name:'Detail',params:{id:post.id}}">
+        <h2>{{post.title}}</h2>
+    </router-link>
+    <p>{{cutPostBody}}</p>
 </template>
 
 <script>
 import { computed } from 'vue'
 export default {
-    
-    props: ['post'],
-    
+    props:['post'],
     setup(props){
-        let cutPostBody = computed(() => {
-            return props.post.body.substring(0,100)+"...";
-        });
-
-        return {cutPostBody};
+        let cutPostBody=computed(()=>{
+            return props.post.body.substring(0,100)+"....";
+        })
+        return {cutPostBody}
     }
 }
 </script>
